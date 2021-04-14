@@ -24,7 +24,7 @@ char_to_shape(Char) ->
     $t -> triangle;
     $E -> ellipse;
     $e -> ellipse;
-    _ -> unknown;
+    _ -> unknown
   end.
 
 -spec(get_number(string()) -> number()).
@@ -37,4 +37,17 @@ get_number(Prompt) ->
   end,
   N.
 
+-spec(get_dimensions(string(), string()) -> {number(), number()}).
+get_dimensions(Prompt1, Prompt2) ->
+  N1 = get_number(Prompt1),
+  N2 = get_number(Prompt2),
+  {N1, N2}.
+
+-spec(calculate(atom(), number(), number()) -> number()).
+calculate(unknown, _, Err) -> io:format("~s~n", [Err]);
+calculate(_, error, _) -> io:format("Error in first number.~n");
+calculate(_, _, error) -> io:format("Error in second number.~n");
+calculate(_, A, B) when A < 0; B < 0 ->
+  io:format("Both numbers must be greater than or equal to zero~n");
+calculate(Shape, A, B) -> geom:get_area(Shape, A, B).
 
