@@ -1,7 +1,7 @@
 -module(dates).
 -export([date_parts/1]).
 
--spec(date_parts(list()) -> list()).
+-spec(date_parts(string()) -> list()).
 
 date_parts(DateStr) ->
   [YStr, MStr, DStr] = re:split(DateStr, "-", [{return, list}]),
