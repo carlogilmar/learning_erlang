@@ -19,3 +19,11 @@
 - In order to restart a process, we need a way to first know that it died. This can be done by adding a layer on top of links (the delicious frosting on the cake) with a concept called system processes.
 - System processes are basically normal processes, except they can convert exit signals to regular messages.
 - By writing programs using system processes, it is easy to create a process whose only role is to check if something dies and then restart it whenever it fails.
+
+# Monitors
+
+Monitors are a special type of link with two differences:
+
+- they are unidirectional.
+- they can be stacked.
+
